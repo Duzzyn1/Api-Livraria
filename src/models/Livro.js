@@ -3,11 +3,19 @@ import { autorSchema } from "./Autor.js"
 
 const livroSchema = new mongoose.Schema({
     id: { type: mongoose.Schema.Types.ObjectId },
-    titulo: { type: String, required: true },
-    editora: { type: String },
+    titulo: { 
+        type: String, 
+        required: [true, "O titulo do livro é obrigatório!"]
+     },
+    editora: { 
+        type: String, 
+        required: [true, "A editora é obrigatória!"]
+    },
     preco: { type: Number },
     paginas: { type: Number },
-    autor: autorSchema
+    autor: {
+        type: autorSchema, 
+        required: [true, "O Autor(a) é obrigatório(a)"]}
 }, { versionKey: false })
 
 const livro = mongoose.model('livros', livroSchema) // primeiro parametro é a coleção lá no Banco de dados, o segundo parametro é o modelo/schema as propriedades do livro.
