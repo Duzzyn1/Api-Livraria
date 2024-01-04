@@ -1,0 +1,14 @@
+GET http://localhost:8000/livros
+
+###
+
+POST http://localhost:8000/livros HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 3,
+    "titulo": "O Simarilion"
+}
+
+###
+DELETE http://localhost:8000/livros/1
